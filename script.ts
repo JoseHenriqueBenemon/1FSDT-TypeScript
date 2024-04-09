@@ -110,3 +110,106 @@ class Gato extends Animal
 const cachorro1 = new Cachorro("Vira-Lata");
 cachorro1.fazerSom()
 
+// Aula 3 (Parte 1) - Interface
+
+interface Maquina
+{
+    porte: string;
+    anoFabricacao: number
+}
+
+// exemplo
+
+let maquina1: Maquina = {porte: "pequeno", anoFabricacao: 2000}
+
+interface Matematica
+{   
+    num1: number;
+    num2: number;
+    calcularContaBasica(sinal: string);
+}
+
+class MatematicaBasica implements Matematica
+{
+    num1: number;
+    num2: number;
+
+    constructor(num1: number, num2: number)
+    {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    getNum1()
+    {
+        console.log(this.num1)
+    }
+
+    calcularContaBasica(sinal: string) 
+    {
+        switch(sinal){
+            case "+":
+                console.log(`Resultado: ${this.num1 + this.num2}`);
+                break;
+            case "-":
+                console.log(`Resultado: ${this.num1 - this.num2}`);
+                break;
+            case "*":
+                console.log(`Resultado: ${this.num1 * this.num2}`);
+                break;
+            case "/":
+                console.log(`Resultado: ${this.num1 / this.num2}`);
+                break;
+            default:
+                console.log(`Operação não colocalizada, tente novamente`);
+                break;
+        }
+    }
+}
+
+// exemplo
+let basica = new MatematicaBasica(12, 10);
+basica.calcularContaBasica("-");
+
+// Aula 3 (Parte 2) - Genérics
+
+// Genérics servem para fornecer uma diferente forma de mexer com os tipos em TypeScript
+
+// No exemplo abaixo, tanto o tipo de dado na função, quanto as variaveis e o retorno da função são de um tipo qualquer
+// Em TypeScript, esse tipo qualquer é definido pela letra T
+function primeiroElemento<T>(arr: T[]): T 
+{
+    return arr[0];
+}
+
+// Chamando a função
+
+console.log("Primeiro elemento do array: " + primeiroElemento([1, 2, 3, 5]));
+
+interface TemNome
+{
+    nome: string;
+}
+
+class PessoaNome implements TemNome
+{
+    nome: string;
+
+    constructor(nome: string)
+    {
+        this.nome = nome;
+    }
+}
+
+class Caixa<T extends TemNome>
+{
+    conteudo: T;
+
+    constructor(conteudo: T){
+        this.conteudo = conteudo;
+    }
+}
+
+let caixa = new Caixa({'nome': 'joão'});
+
+console.log(`Nome dentro da caixa: ${caixa.conteudo.nome}`);

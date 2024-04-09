@@ -45,7 +45,7 @@ var Livro = /** @class */ (function () {
 }());
 var livroFavorito = new Livro("Malu de Bicicleta", 2004);
 livroFavorito.exibirDetalhes();
-// Aula 2 (Parte 1) - Orientação a Objeto I
+// Aula 2 (Parte 1 e Parte 2) - Orientação a Objeto I
 var Pessoa = /** @class */ (function () {
     function Pessoa(nome, idade) {
         this.nome = nome;
@@ -58,7 +58,6 @@ var Pessoa = /** @class */ (function () {
 }());
 var aluno = new Pessoa("José Henrique", 21);
 aluno.saudacao();
-// Classe com polimorfismo (Uma classe 'filha' que sobrescreve a classe 'pai')
 var Animal = /** @class */ (function () {
     function Animal(especie) {
         this.especie = especie;
@@ -72,11 +71,14 @@ var Animal = /** @class */ (function () {
     };
     return Animal;
 }());
+// Nesta classe utilizamos Herança para pegar atributos e métodos da superclasse (Animal) 
+// pois neste programa faz sentido o Cachorro ser uma subclasse da classe Animal, afinal, todo cachorro é um animal
 var Cachorro = /** @class */ (function (_super) {
     __extends(Cachorro, _super);
     function Cachorro() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    // Classe com polimorfismo (Uma classe 'filha' que sobrescreve um  método da classe 'pai')
     Cachorro.prototype.fazerSom = function () {
         console.log("O cachorro late!");
     };
@@ -94,3 +96,60 @@ var Gato = /** @class */ (function (_super) {
 }(Animal));
 var cachorro1 = new Cachorro("Vira-Lata");
 cachorro1.fazerSom();
+// exemplo
+var maquina1 = { porte: "pequeno", anoFabricacao: 2000 };
+var MatematicaBasica = /** @class */ (function () {
+    function MatematicaBasica(num1, num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+    MatematicaBasica.prototype.getNum1 = function () {
+        console.log(this.num1);
+    };
+    MatematicaBasica.prototype.calcularContaBasica = function (sinal) {
+        switch (sinal) {
+            case "+":
+                console.log("Resultado: ".concat(this.num1 + this.num2));
+                break;
+            case "-":
+                console.log("Resultado: ".concat(this.num1 - this.num2));
+                break;
+            case "*":
+                console.log("Resultado: ".concat(this.num1 * this.num2));
+                break;
+            case "/":
+                console.log("Resultado: ".concat(this.num1 / this.num2));
+                break;
+            default:
+                console.log("Opera\u00E7\u00E3o n\u00E3o colocalizada, tente novamente");
+                break;
+        }
+    };
+    return MatematicaBasica;
+}());
+// exemplo
+var basica = new MatematicaBasica(12, 10);
+basica.calcularContaBasica("-");
+// Aula 3 (Parte 2) - Genérics
+// Genérics servem para fornecer uma diferente forma de mexer com os tipos em TypeScript
+// No exemplo abaixo, tanto o tipo de dado na função, quanto as variaveis e o retorno da função são de um tipo qualquer
+// Em TypeScript, esse tipo qualquer é definido pela letra T
+function primeiroElemento(arr) {
+    return arr[0];
+}
+// Chamando a função
+console.log("Primeiro elemento do array: " + primeiroElemento([1, 2, 3, 5]));
+var PessoaNome = /** @class */ (function () {
+    function PessoaNome(nome) {
+        this.nome = nome;
+    }
+    return PessoaNome;
+}());
+var Caixa = /** @class */ (function () {
+    function Caixa(conteudo) {
+        this.conteudo = conteudo;
+    }
+    return Caixa;
+}());
+var caixa = new Caixa({ 'nome': 'joão' });
+console.log("Nome dentro da caixa: ".concat(caixa.conteudo.nome));
