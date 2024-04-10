@@ -213,3 +213,16 @@ class Caixa<T extends TemNome>
 let caixa = new Caixa({'nome': 'joão'});
 
 console.log(`Nome dentro da caixa: ${caixa.conteudo.nome}`);
+
+// Aula 4 - Modules e namespaces
+
+import { OperacoesBasicas } from "./operacoesBasicas";
+import { OperacoesAvancadas } from "./operacoesAvancadas";
+
+console.log(OperacoesBasicas.somar(1,2));
+console.log(OperacoesBasicas.subtrair(1,2));
+console.log(OperacoesBasicas.multiplicar(1,2));
+console.log(OperacoesBasicas.dividir(1,2));
+console.log(OperacoesAvancadas.exponenciar(2, 4));
+console.log(OperacoesAvancadas.logaritmo(5, 25));
+

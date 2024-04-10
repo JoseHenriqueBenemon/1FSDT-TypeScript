@@ -1,3 +1,4 @@
+"use strict";
 // Aula 1 (Parte 1) - Desenvolvimento básico, classe Carro
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -14,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
 var Carro = /** @class */ (function () {
     function Carro(marca, modelo) {
         this.marca = marca;
@@ -153,3 +155,12 @@ var Caixa = /** @class */ (function () {
 }());
 var caixa = new Caixa({ 'nome': 'joão' });
 console.log("Nome dentro da caixa: ".concat(caixa.conteudo.nome));
+// Aula 4 - Modules e namespaces
+var operacoesBasicas_1 = require("./operacoesBasicas");
+var operacoesAvancadas_1 = require("./operacoesAvancadas");
+console.log(operacoesBasicas_1.OperacoesBasicas.somar(1, 2));
+console.log(operacoesBasicas_1.OperacoesBasicas.subtrair(1, 2));
+console.log(operacoesBasicas_1.OperacoesBasicas.multiplicar(1, 2));
+console.log(operacoesBasicas_1.OperacoesBasicas.dividir(1, 2));
+console.log(operacoesAvancadas_1.OperacoesAvancadas.exponenciar(2, 4));
+console.log(operacoesAvancadas_1.OperacoesAvancadas.logaritmo(5, 25));
